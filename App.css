@@ -1,0 +1,471 @@
+:root {
+  --primary-blue: #1a73e8;
+  --primary-dark: #0d47a1;
+  --primary-light: #e8f0fe;
+  --accent: #34a853;
+  --white: #ffffff;
+  --light-grey: #f8f9fa;
+  --medium-grey: #e0e0e0;
+  --dark-grey: #757575;
+  --text-dark: #202124;
+  --text-light: #5f6368;
+  --shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --border-radius: 8px;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--light-grey);
+  color: var(--text-dark);
+  line-height: 1.5;
+}
+
+/* App Layout */
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  background-color: var(--white);
+  padding: 16px 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--primary-blue);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.logo-icon {
+  margin-right: 10px;
+  color: var(--primary-blue);
+}
+
+.container {
+  display: flex;
+  max-width: 1200px;
+  margin: 24px auto;
+  gap: 24px;
+}
+
+/* Search Component */
+.search-wrapper {
+  background-color: var(--primary-blue);
+  padding: 24px 0;
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.search-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.search-header {
+  color: var(--white);
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 16px 18px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  transition: all 0.3s;
+  box-shadow: var(--shadow);
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-light), var(--shadow);
+}
+
+.suggestions {
+  position: absolute;
+  width: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  background: var(--white);
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+  z-index: 100;
+  box-shadow: var(--shadow);
+}
+
+.suggestion-item {
+  padding: 12px 18px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: var(--primary-light);
+  color: var(--primary-blue);
+}
+
+/* Filter Panel */
+.filter-panel {
+  width: 280px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  align-self: flex-start;
+  position: sticky;
+  top: 100px;
+}
+
+.filter-section {
+  margin-bottom: 0;
+  padding: 20px;
+  border-bottom: 1px solid var(--medium-grey);
+}
+
+.filter-section:last-child {
+  border-bottom: none;
+}
+
+.filter-header {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+  display: flex;
+  align-items: center;
+}
+
+.filter-icon {
+  margin-right: 10px;
+  color: var(--primary-blue);
+}
+
+.filter-option {
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-option:last-child {
+  margin-bottom: 0;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+  margin-right: 12px;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary-blue);
+}
+
+.filter-option label {
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--text-light);
+}
+
+/* Doctor List */
+.doctor-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.results-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  margin-bottom: 8px;
+}
+
+.results-count {
+  font-size: 15px;
+  color: var(--text-light);
+}
+
+.results-sort {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.sort-label {
+  margin-right: 8px;
+  color: var(--text-light);
+}
+
+/* Doctor Card */
+.doctor-card {
+  display: flex;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.doctor-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+}
+
+.doctor-photo {
+  width: 140px;
+  height: 140px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: var(--light-grey);
+}
+
+.doctor-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.doctor-card:hover .doctor-photo img {
+  transform: scale(1.05);
+}
+
+.doctor-info {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.doctor-meta {
+  width: 200px;
+  padding: 20px;
+  background-color: var(--light-grey);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-left: 1px solid var(--medium-grey);
+}
+
+.doctor-name {
+  font-weight: 600;
+  font-size: 20px;
+  margin-bottom: 8px;
+  color: var(--primary-blue);
+}
+
+.doctor-specialty {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.specialty-tag {
+  display: inline-block;
+  background-color: var(--primary-light);
+  color: var(--primary-blue);
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.doctor-intro {
+  font-size: 15px;
+  line-height: 1.6;
+  margin-bottom: 12px;
+  color: var(--text-light);
+}
+
+.doctor-details {
+  display: flex;
+  gap: 24px;
+  margin-top: auto;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.detail-icon {
+  margin-right: 8px;
+  color: var(--primary-blue);
+}
+
+.doctor-clinic {
+  margin-bottom: 12px;
+}
+
+.clinic-name {
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.clinic-address {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.consultation-types {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.consultation-type {
+  display: flex;
+  align-items: center;
+  background-color: var(--primary-light);
+  color: var(--primary-blue);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.consultation-icon {
+  margin-right: 6px;
+}
+
+.meta-detail {
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.meta-icon {
+  margin-right: 10px;
+  color: var(--primary-blue);
+}
+
+.doctor-fee {
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 18px;
+  margin-top: auto;
+}
+
+.book-button {
+  background-color: var(--primary-blue);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.book-button:hover {
+  background-color: var(--primary-dark);
+}
+
+/* Loading & No Results States */
+.loading,
+.no-doctors {
+  padding: 40px;
+  text-align: center;
+  background-color: var(--white);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.loading-spinner {
+  margin-bottom: 16px;
+  color: var(--primary-blue);
+}
+
+.no-doctors-icon {
+  margin-bottom: 16px;
+  color: var(--dark-grey);
+  font-size: 48px;
+}
+
+.no-doctors-text {
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .doctor-photo {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .filter-panel {
+    width: 100%;
+    position: static;
+  }
+  
+  .doctor-card {
+    flex-wrap: wrap;
+  }
+  
+  .doctor-meta {
+    width: 100%;
+    border-left: none;
+    border-top: 1px solid var(--medium-grey);
+  }
+  
+  .doctor-photo {
+    width: 100px;
+    height: 100px;
+  }
+}
+
